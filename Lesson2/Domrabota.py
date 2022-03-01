@@ -64,8 +64,17 @@ favColour = input('Напишите любимый цвет: ')
 favCity = input('Напишите любимый город: ')
 favFood = input('Напишите любимое блюдо: ')
 
-print(f"Мое любимое число - {favNumber}, любимый цвет - {favColour}, любимый город - {favCity.capitalize()}, а любимое блюдо - {favFood}") #метод Fomat
-print(f"Мое любимое число - ", favNumber, " любимый цвет - ", favColour, " любимый город - ", favCity.capitalize(), " а любимое блюдо - ", favFood) #метод f-сторки
+# метод Fomat
+print(f"Мое любимое число - {favNumber}, "
+      f"любимый цвет - {favColour}, "
+      f"любимый город - {favCity.capitalize()}, "
+      f"а любимое блюдо - {favFood}")
+#метод f-сторки
+print(f"Мое любимое число - ",
+      favNumber, " любимый цвет - ",
+      favColour, " любимый город - ", 
+      favCity.capitalize(), " а любимое блюдо - ",
+      favFood)
 
 
 
