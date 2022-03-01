@@ -72,8 +72,8 @@ print(f"Мое любимое число - {favNumber}, "
 #метод f-сторки
 print(f"Мое любимое число - ",
       favNumber, " любимый цвет - ",
-      favColour, " любимый город - ", 
-      favCity.capitalize(), " а любимое блюдо - ",
+      favColour, " любимый город - ",
+      favCity.capitalize(), ", а любимое блюдо - ",
       favFood)
 
 
