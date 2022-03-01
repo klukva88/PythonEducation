@@ -69,7 +69,7 @@ print(f"Мое любимое число - {favNumber}, "
       f"любимый цвет - {favColour}, "
       f"любимый город - {favCity.capitalize()}, "
       f"а любимое блюдо - {favFood}")
-#метод f-сторки
+#метод f-строки
 print(f"Мое любимое число - ",
       favNumber, " любимый цвет - ",
       favColour, " любимый город - ",
