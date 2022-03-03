@@ -15,3 +15,4 @@ print(totalSum, end=" ")
 for i in range (37, 64):
     if i%2 == 0:
         print(i)
+
