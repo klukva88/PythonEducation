@@ -83,3 +83,4 @@ while len(employeeList) != 0:
         print('Вы вышли из программы')
         break
 print('Все рабочие закончились!')
+
