@@ -1,7 +1,8 @@
 '''1. Создайте программу, в которой пользователь будет указывать размер словаря,
 после чего устанавливать ключи и значения с клавиатуры, например:'''
 
-'''mydict = {}
+#Вариант 1
+mydict = {}
 dictUpdate = {}
 dictSize = int(input('Введите размер словаря: '))
 while dictSize > 0:
@@ -15,7 +16,18 @@ while dictSize > 0:
 for key, value in mydict.items():
     print(f' Ключ: {key} \n Значение: {value} ')
 print(mydict)
-#Попробовать через defaultdict()'''
+
+#Вариант 2
+
+mydict = {}
+dictSize = int(input('Введите размер словаря: '))
+while dictSize > 0:
+    key = input('Введите Ключ: ')
+    mydict[key] = input('Введите значение: ')
+    dictSize -= 1
+for key, value in mydict.items():
+    print(f' Ключ: {key} \n Значение: {value} ')
+
 
 '''Задача 2
 Создайте словарь из чисел. Выполните над ним операции:
