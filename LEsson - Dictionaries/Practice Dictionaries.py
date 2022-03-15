@@ -41,7 +41,7 @@ numberDict = {1: 'Один', 2: 'Два', 3: 'Три'}
 numberDict.pop(2) #Удаление по ключу
 del numberDict[1] #Удаление по ключу с помощью del
 numberDict.clear() #очищение словаря
-numberDict = None #Удаление словаря - не уверен что сделал правильно
+del numberDict #Удаление словаря - не уверен что сделал правильно
 
 
 '''Задача 3
@@ -75,7 +75,7 @@ Cделайте копию словаря
 
 d = {"Один" : "Питон", "Два" : "C++", "Три" : "Java", "Четыре" : "C#"}
 dCopy = d.copy()
-d.clear()
+del d
 dCopy.pop("Три")
 dCopy['Новое'] = 'Kotlin'
 print(dCopy)
