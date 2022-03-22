@@ -29,9 +29,9 @@ print(todayDayTime.time())
 someTime = time(4,30,45)
 print(someTime)
 
-# userDate = input('Input the date and time you purchased car d/m/yyyy s:m:h :')
-# datetimeUser = datetime.strptime(userDate,'%d/%m/%Y %S:%M:%H')
-# print(datetimeUser)
+userDate = input('Input the date and time you purchased car d/m/yyyy s:m:h :')
+datetimeUser = datetime.strptime(userDate,'%d/%m/%Y %S:%M:%H')
+print(datetimeUser)
 
 todayNow = datetime.now()
 print(todayNow.strftime('%d/%m/%Y(%H:%M:%S)'))
