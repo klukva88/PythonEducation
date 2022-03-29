@@ -73,8 +73,8 @@ print(devidefunc(2, 4))
 # checkOdds = lambda number: 'Четный' if number % 2 == 0 else ('Нечетный')
 
 listToCheck = [12, 33, 45, 4, 54, 1, 32, 11, 67, 88]
-# result = [checkOdds(item) for item in listToCheck]
-result = list(map(lambda number: 'Четный' if number % 2 == 0 else ('Нечетный'), listToCheck))
+
+result = list(map(lambda number: 'Четный' if number % 2 == 0 else 'Нечетный', listToCheck))
 print(result)
 
 '''Задча 7
