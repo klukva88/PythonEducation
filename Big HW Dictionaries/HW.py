@@ -91,15 +91,18 @@ print(f'Программа должна иметь в себе следующе�
       f'\n0 - Выход из Программы')
 
 menuCommand = input('Введите команду: ')
-
-if menuCommand == '12':
-
- cars = set()
+'''
+cars = set()
  for key in myWorkerDict.keys():
   if myWorkerDict[key]["Транспорт"] == "Пешком":
    pass
   else:
    cars.add(myWorkerDict[key]["Транспорт"])
+   '''
+
+if menuCommand == '12':
+    cars = [myWorkerDict[key]["Транспорт"] for key in myWorkerDict.keys() if myWorkerDict[key]["Транспорт"] != "Пешком"]
+    print(cars)
 
 
- print(cars)
+
