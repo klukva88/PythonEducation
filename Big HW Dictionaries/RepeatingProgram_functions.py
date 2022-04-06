@@ -78,7 +78,7 @@ def searchWorker(nameWorker):
                   if valueWorker == nameWorker:
                       for key, valueWorker in workerDict.items():
                           print(key, valueWorker)
-                    
+
 
 def showListAwarded():
     counter = 1
