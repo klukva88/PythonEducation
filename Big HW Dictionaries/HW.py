@@ -90,19 +90,31 @@ print(f'Программа должна иметь в себе следующе�
       f'\n13 - Отобразить имена и кол-во детей всех сотрудников'
       f'\n0 - Выход из Программы')
 
-menuCommand = input('Введите команду: ')
-'''
-cars = set()
- for key in myWorkerDict.keys():
-  if myWorkerDict[key]["Транспорт"] == "Пешком":
-   pass
-  else:
-   cars.add(myWorkerDict[key]["Транспорт"])
-   '''
 
-if menuCommand == '12':
+def searchForEmployee():
+    userInput = input('Введите имя сотрудника: ')
+    employeeDict = [employeeValue for employeeValue in myWorkerDict.values() if userInput in employeeValue.values()]
+    for key, value in employeeDict.items():
+        #print(f'{key}: {value}')
+        print(employeeDict)
+
+
+
+def searchForCars():
     cars = [myWorkerDict[key]["Транспорт"] for key in myWorkerDict.keys() if myWorkerDict[key]["Транспорт"] != "Пешком"]
-    print(cars)
+    cars = set(cars)
+    for car in cars:
+        print()
+    return print(cars)
+
+menuCommand = input('Здравствуйте, дорогой Пользователь! \n'
+                    'Наберите определенную цифру из данного меню, \n'
+                    'чтобы получить доступ к нужному Вам функционалу!: ')
+if menuCommand == '12':
+    searchForCars()
+elif menuCommand =='1':
+    searchForEmployee()
+
 
 
 
