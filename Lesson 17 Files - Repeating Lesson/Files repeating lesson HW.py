@@ -5,7 +5,7 @@ def copyFile(file1, file2):
        fileOne = fileOne.read()
     with open(file2, 'w') as fileTwo:
         fileTwo.write(fileOne)
-copyFile('text.txt', 'text_copy.txt')
+#copyFile('text.txt', 'text_copy.txt')
 
 '''Задача2
 Отобразите последние 3 строки из файла'''
@@ -16,7 +16,7 @@ def lastTreeLines(file):
         for line in lines[-3::]:
             print(line.rstrip())
 
-lastTreeLines('text_copy.txt')
+#lastTreeLines('text_copy.txt')
 
 def minWordLength(file):
     with open(file, 'r', encoding='utf8') as file:
@@ -24,7 +24,7 @@ def minWordLength(file):
         print(lines)
         minLength = sorted(lines, key=lambda line: len(line))
         print(f'Слово наименьшей длины - {minLength[0]}')
-minWordLength('text_copy.txt')
+#minWordLength('text_copy.txt')
 
 '''Задача 4
 Из файла “food” выведите только 3 колонку'''
@@ -36,7 +36,7 @@ def thirdColumn(file):
     for item in column:
         print(item.value)
 
-thirdColumn('food.xlsx')
+#thirdColumn('food.xlsx')
 
 '''Задача 5
 Из файла “food” выведите только 5 строку'''
@@ -49,7 +49,7 @@ def fifthRow(file):
     for item in row:
         for cell in item:
             print(cell.value)
-fifthRow('food.xlsx')
+#fifthRow('food.xlsx')
 
 '''Задача 6
 Примите 2 координаты для отображения промежутка от 
@@ -81,7 +81,34 @@ def showCityData(city):
     for rowData in cityData:
         print(rowData, end='\n')
 
-showCityData(input('Введите город: '))
+#showCityData(input('Введите город: '))
 
+'''Задача 8
+Создайте новую страницу в файле food.xlsx и скопируйте 
+промежуток «B14:G27'''
+wb = load_workbook('food.xlsx')
 
+def createNewPage(listName):
+    wb.create_sheet(listName, 0)
+    sheets = wb.sheetnames
+    print(f'Лист {listName} создан!\n'
+          f'Список листов: {sheets}')
+def copyCellRange(startCell, endCell, listSource, endList):
+    sheetSource = wb[listSource]
+    endSheet = wb[endList]
+    print(f'Выбран лист {list}')
+    cellRange = [[data.value for data in cell] for cell in sheetSource[startCell:endCell]]
+    print(cellRange)
+    for value in cellRange:
+        endSheet.append(value)
+    wb.save('food.xlsx')
 
+newSheet = input('Введите название нового листа: ')
+createNewPage(newSheet)
+
+selectSource = input('Выберете лист откуда скопировать диапазон: ')
+startCell = input('Введите первую ячейку диапазона: ')
+endCell = input('Введите последнюю ячейку диапазона: ')
+selectEndList = input('Выберете лист куда вставить диапазон: ')
+
+copyCellRange(startCell, endCell, selectSource, selectEndList)
