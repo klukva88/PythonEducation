@@ -38,4 +38,16 @@ for member in family:
 familyWb.remove(sheetToRemove)
 familyWb.save('family_members.xlsx')
 
+'''Задача 3
+Необходимо добавить дополнительную строку «ИТОГО» и 
+посчитать итоговые значения для колонок с помощью формул.'''
+
+wb = load_workbook('family_members.xlsx')
+sheet = wb.active
+total = (
+    ('ИТОГО', None, '=SUM(C2:C6)', '=SUM(D2:D6)', '=SUM(E2:E6)')
+)
+sheet.append(total)
+wb.save('family_members.xlsx')
+
 
