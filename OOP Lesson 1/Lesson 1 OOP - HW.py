@@ -71,6 +71,7 @@ class Person:
         else:
             pass
         self.__age = age
+
     def get_age(self):
         return self.__age
 
