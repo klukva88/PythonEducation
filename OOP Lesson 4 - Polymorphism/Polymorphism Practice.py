@@ -49,23 +49,22 @@ class Vip_Account(BankAccount):
         if self.isVip==True:
             print('Обслуживание в первую очередь')
 
-class Premium_account(Vip_Account):
-    def __init__(self, id, balance, isVip, isPremium):
-        Vip_Account.__init__(self, isVip)
+class Premium_account(BankAccount):
+    def __init__(self, id, balance, isPremium):
+        BankAccount.__init__(self, id, balance)
         self.isPremium = isPremium
 
     def priveleges(self):
         if self.isPremium == True:
             print('Скидка по карте 25%, резервирование премиальных услуг скидка в 10%')
-        elif self.isPremium == True and self.isVip == True:
-            print('Вы VIP')
+        else:
+            pass
 
 
 
 user = Vip_Account('12335', 10000, True)
 
-user.vipserving(False)
-
-user = Premium_account(True, True)
-user.priveleges()
 user.vipserving()
+
+user2 = Premium_account('12335', 10000, True)
+user2.priveleges()
