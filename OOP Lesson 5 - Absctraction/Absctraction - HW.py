@@ -87,7 +87,6 @@ class SportCar(Car):
 
     def brake(self):
         print(f'{self.color} спорткар {self.model} тормозит с {self.maxSpeed} км/ч до 0 за 3 секунды')
-
     def gas(self):
         print(f'{self.color} спорткар {self.model} разгоняется с 0 до {self.maxSpeed} км/ч за 10 секунд\n')
 
@@ -95,7 +94,6 @@ class FamilyCar(Car):
 
     def brake(self):
         print(f'{self.color} семейный авто {self.model} тормозит с {self.maxSpeed} км/ч до 0 за 15 секунд')
-
     def gas(self):
         print(f'{self.color} семейный авто {self.model} разгоняется с 0 до {self.maxSpeed} км/ч за 30 секунд\n')
 
@@ -112,3 +110,4 @@ car2.gas()
 car3 = FamilyCar('Volvo XC70', 'Черная', 200)
 car3.brake()
 car3.gas()
+

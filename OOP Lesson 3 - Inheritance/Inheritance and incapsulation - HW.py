@@ -68,8 +68,9 @@ class MathTeacher(Teacher):
 #Задача 2
 class MathGeographyTeacher(GeographyTeacher, MathTeacher):
     def __init__(self, fullName, experience, subject, studentsNumber, num1, num2, num3, country):
-        GeographyTeacher.__init__(self, fullName, experience, subject, studentsNumber, country)
-        MathTeacher.__init__(self, fullName, experience, subject, studentsNumber, num1, num2, num3)
+        Teacher.__init__(self,fullName, experience, subject, studentsNumber)
+        GeographyTeacher.__init__(self, studentsNumber, country)
+        MathTeacher.__init__(self, num1, num2, num3)
 
     def introducing(self):
         print(f'Меня зовут {self.fullName} - я веду Математику и Географию')
