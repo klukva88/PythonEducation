@@ -199,9 +199,11 @@ class TriangleChecker:
                 return 'Жаль, но из этого треугольник не сделать'
             elif side < 0:
                 return 'С отрицательными числами ничего не выйдет!'
-            else:
-                pass
-        return 'Ура, можно построить треугольник!'
+        if self.sidesList[0]+self.sidesList[1] > self.sidesList[2] and self.sidesList[1]+self.sidesList[2] > self.sidesList[0] and self.sidesList[0]+self.sidesList[2] > self.sidesList[1]:
+            return 'Ура, можно построить треугольник!'
+        else:
+            return 'Жаль, но из этого треугольник не сделать'
+
 
 
 triangle1 = TriangleChecker([2, 3, 4])
@@ -211,7 +213,8 @@ print(triangle2.is_triangle())
 triangle3 = TriangleChecker([77, 3, 'Сторона3'])
 print(triangle3.is_triangle())
 triangle4 = TriangleChecker([77, -3, 4])
-print(triangle4.is_triangle())
+triangle5 = TriangleChecker([77, 3, 4])
+print(triangle5.is_triangle())
 '''Задача 6
 Есть три класса Donkey, Horse, Mul
 • Класс Donkey имеет атрибуты name, age, living_area, typeDonkey, метод

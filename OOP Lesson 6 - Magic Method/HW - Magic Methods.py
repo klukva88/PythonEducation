@@ -20,9 +20,51 @@ class Person:
     def __len__(self):
         return len(self.__name)
     def __add__(self, other):
-        return other + self.__salary
+        if isinstance(other, Person):
+            return other.__salary + self.__salary
+        elif isinstance(other, (int, float)):
+            return other + self.__salary
+
+    def __radd__(self, other):
+        if isinstance(other, Person):
+            return other.__salary + self.__salary
+        elif isinstance(other, (int, float)):
+            return other + self.__salary
+
     def __sub__(self, other):
-        return abs(other - self.__salary)
+        if isinstance(other, Person):
+            return other.__salary - self.__salary
+        elif isinstance(other, (int, float)):
+            return self.__salary - other
+    def __rsub__(self, other):
+        if isinstance(other, Person):
+            return other.__salary - self.__salary
+        elif isinstance(other, (int, float)):
+            return self.__salary - other
+
+    def __mul__(self, other):
+        if isinstance(other, Person):
+            return other.__salary * self.__salary
+        elif isinstance(other, (int, float)):
+            return other * self.__salary
+
+    def __rmul__(self, other):
+        if isinstance(other, Person):
+            return other.__salary * self.__salary
+        elif isinstance(other, (int, float)):
+            return other * self.__salary
+
+    def __truediv__(self, other):
+        if isinstance(other, Person):
+            return other.__salary / self.__salary
+        elif isinstance(other, (int, float)):
+            return other / self.__salary
+    def __rtruediv__(self, other):
+        if isinstance(other, Person):
+            return other.__salary / self.__salary
+        elif isinstance(other, (int, float)):
+            return other / self.__salary
+
     def __str__(self):
         return self.__name
 
@@ -33,7 +75,8 @@ print(f' Name length of {person1} is {len(person1)} letters')
 print(f' Name length of {person2} is {len(person2)} letters')
 
 print(f'Salary total of {person1} and {person2} equals {person1 + person2}')
-print(f'Salary difference between {person1} и {person2} equlas {person1 - person2}')
+print(f'Salary difference between {person1} и {person2} equals {abs(person1 - 100)}')
+print(f'Salary difference between {person1} и {person2} equals {abs(1000 - person2)}')
 print(f' Person 2 name is {person2}')
 
 '''Задача 2
@@ -47,95 +90,123 @@ print(f' Person 2 name is {person2}')
 при создании магических методов'''
 
 class Area:
-    def __init__(self, width, height):
-        self.__width = width
-        self.__height = height
+    def __init__(self, dimension):
+        self.__dimension = dimension
 
     def figureArea(self):
-        return self.__width * self.__height
+        return self.__dimension[0] * self.__dimension[1]
 
     def __lt__(self, other):
-        # Делаю проверку через try except на случай если в магический метод передадут число вместо 2й фигуры
-        # Сделал именно через try потому что показалось что так будет менее громоздко
-        try:
+        if isinstance(other, Area):
             if self.figureArea() < other.figureArea():
-                print(f'Figure 1 is less then Figure 2')
+                return f'Figure 1 is less then Figure 2'
+            elif isinstance(self, (int, float)) and other.figureArea() < self:
+                return f'Figure 2 is less then {self}'
             else:
-                print(f'Figure 1 is greater then Figure 2')
-        except AttributeError:
+                return f'Figure 1 is greater then Figure 2'
+        elif isinstance(other, (int, float)):
             if self.figureArea() < other:
-                print(f'Figure 1 is less then {other}')
+                return f'Figure 1 is less then {other}'
             else:
-                print(f'Figure 1 is greater then {other}')
-        return '' #Если не сделать return то функция возвращает None
+                return f'Figure 1 is greater then {other}'
+
+    def __delitem__(self, key):
+        del self.__dimension[key]
+    def __getitem__(self, item):
+        return self.__dimension[item]
+    def __contains__(self, item):
+        if item in self.__dimension:
+            return True
 
 
 
 
-    def __gt__(self, other):
-        try:
-            if self.figureArea() > other.figureArea():
-                print(f'Figure 1 is greater then Figure 2')
-            else:
-                print(f'Figure 1 is less then Figure 2')
-        except AttributeError:
-            if self.figureArea() > other:
-                print(f'Figure 1 is greater then {other}')
-            else:
-                print(f'Figure 1 is less then {other}')
-        return ''
+    # def __lt__(self, other):
+    #     # Делаю проверку через try except на случай если в магический метод передадут число вместо 2й фигуры
+    #     # Сделал именно через try потому что показалось что так будет менее громоздко
+    #     try:
+    #         if self.figureArea() < other.figureArea():
+    #             print(f'Figure 1 is less then Figure 2')
+    #         else:
+    #             print(f'Figure 1 is greater then Figure 2')
+    #     except AttributeError:
+    #         if self.figureArea() < other:
+    #             print(f'Figure 1 is less then {other}')
+    #         else:
+    #             print(f'Figure 1 is greater then {other}')
+    #     return '' #Если не сделать return то функция возвращает None
+    #
+    # def __gt__(self, other):
+    #     try:
+    #         if self.figureArea() > other.figureArea():
+    #             print(f'Figure 1 is greater then Figure 2')
+    #         else:
+    #             print(f'Figure 1 is less then Figure 2')
+    #     except AttributeError:
+    #         if self.figureArea() > other:
+    #             print(f'Figure 1 is greater then {other}')
+    #         else:
+    #             print(f'Figure 1 is less then {other}')
+    #     return ''
+    #
+    # def __eq__(self, other):
+    #     try:
+    #         if self.figureArea() == other.figureArea():
+    #             print(f'Figure 1 is equal to Figure 2')
+    #         else:
+    #             print(f'Figure 1 is NOT equal Figure 2')
+    #     except AttributeError:
+    #         if self.figureArea() == other:
+    #             print(f'Figure 1 is equal to {other}')
+    #         else:
+    #             print(f'Figure 1 is NOT equal {other}')
+    #     return ''
+    #
+    # def __ge__(self, other):
+    #     try:
+    #         if self.figureArea() >= other.figureArea():
+    #             print(f'Figure 1 is greater or equal then Figure 2')
+    #         else:
+    #             print(f'Figure 1 is less then Figure 2')
+    #     except AttributeError:
+    #         if self.figureArea() >= other:
+    #             print(f'Figure 1 is greater or equal then {other}')
+    #         else:
+    #             print(f'Figure 1 is less then {other}')
+    #     return ''
+    #
+    # def __le__(self, other):
+    #     try:
+    #         if self.figureArea() <= other.figureArea():
+    #             print(f'Figure 1 is less or equal then Figure 2')
+    #         else:
+    #             print(f'Figure 1 is greater then Figure 2')
+    #     except AttributeError:
+    #         if self.figureArea() <= other:
+    #             print(f'Figure 1 is less or equal then Figure 2')
+    #         else:
+    #             print(f'Figure 1 is greater then {other}')
+    #     return ''
 
-    def __eq__(self, other):
-        try:
-            if self.figureArea() == other.figureArea():
-                print(f'Figure 1 is equal to Figure 2')
-            else:
-                print(f'Figure 1 is NOT equal Figure 2')
-        except AttributeError:
-            if self.figureArea() == other:
-                print(f'Figure 1 is equal to {other}')
-            else:
-                print(f'Figure 1 is NOT equal {other}')
-        return ''
-
-    def __ge__(self, other):
-        try:
-            if self.figureArea() >= other.figureArea():
-                print(f'Figure 1 is greater or equal then Figure 2')
-            else:
-                print(f'Figure 1 is less then Figure 2')
-        except AttributeError:
-            if self.figureArea() >= other:
-                print(f'Figure 1 is greater or equal then {other}')
-            else:
-                print(f'Figure 1 is less then {other}')
-        return ''
-
-    def __le__(self, other):
-        try:
-            if self.figureArea() <= other.figureArea():
-                print(f'Figure 1 is less or equal then Figure 2')
-            else:
-                print(f'Figure 1 is greater then Figure 2')
-        except AttributeError:
-            if self.figureArea() <= other:
-                print(f'Figure 1 is less or equal then Figure 2')
-            else:
-                print(f'Figure 1 is greater then {other}')
-        return ''
-
-figure1 = Area(10, 20)
-figure2 = Area(10, 30)
+figure1 = Area([10, 20])
+figure2 = Area([10, 30])
 
 print(figure1 < 20)
 print(figure1 < figure2)
-print(figure1 > 20)
-print(figure1 > figure2)
-print(figure1 == 20)
-print(figure1 == figure2)
-print(figure1 <= 20)
-print(figure1 <= figure2)
-print(figure1 >= 20)
-print(figure1 >= figure2)
+#print(20 < figure2)
+print(figure2 < 20)
+print(10 in figure1)
+print(10 in figure2)
+print(15 in figure2)
+del figure2[0]
+print(f'Width of Figure 1 is {figure1[1]}')
+# print(figure1 > 20)
+# print(figure1 > figure2)
+# print(figure1 == 20)
+# print(figure1 == figure2)
+# print(figure1 <= 20)
+# print(figure1 <= figure2)
+# print(figure1 >= 20)
+# print(figure1 >= figure2)
 
 
